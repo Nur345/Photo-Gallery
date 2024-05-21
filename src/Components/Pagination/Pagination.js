@@ -6,9 +6,7 @@ const Pagination = ({ totalPages, onPageChange }) => {
   const [displayedPages, setDisplayedPages] = useState([]);
   const itemsPerPage = 10;
 
-  useEffect(() => {
-    updateDisplayedPages();
-  }, [currentPage, totalPages]);
+ 
 
   const updateDisplayedPages = () => {
     const maxPages = Math.min(totalPages, currentPage + itemsPerPage - 1);
@@ -19,7 +17,9 @@ const Pagination = ({ totalPages, onPageChange }) => {
     }
     setDisplayedPages(newDisplayedPages);
   };
-
+  useEffect(() => {
+    updateDisplayedPages();
+  })
   const handlePageChange = (page) => {
     setCurrentPage(page);
     onPageChange(page);
